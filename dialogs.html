@@ -373,10 +373,14 @@
     });
 }
 
-function openInBrowser(url) {
-    const { shell } = require('electron');
-    shell.openExternal(url);
-}
+//function openInBrowser(url) {
+//    const { shell } = require('electron');
+ //   shell.openExternal(url);
+//}
+
+     function openInBrowser(url) {
+            window.open(url, '_blank'); 
+        }   
         
         document.getElementById('uploadButton').addEventListener('click', () => {
             document.getElementById('imageInput').click(); //
