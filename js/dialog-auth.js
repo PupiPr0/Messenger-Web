@@ -37,7 +37,7 @@ function checkAccessToken() {
            // window.location.href = 'dialogs.html';
         } else {
             console.log('Ошибка от сервера:', data);
-           window.location.href = 'https://web.dkon.app/#error_dialog_auth;
+           window.location.href = 'https://web.dkon.app/#error_dialog_auth';
         }
     })
     .catch(error => {
