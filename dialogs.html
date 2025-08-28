@@ -172,7 +172,8 @@
                     <div class="no-select bg-gray px-4 py-2 bg-light d-flex justify-content-between align-items-center">
                         <p dkon-trans="last_dialogs" class="h5 mb-0 py-1">Recent</p>
                         <div>
-                            
+                            <span id="incoming"></span>
+                            <button alt="Call End" class="button small-button button-rights-dkn" id="btnHangup" style="visibility:none">☎️</button>
                             <button id="btnConnect" style="visibility: hidden">Connect</button>
                             <button class="button small-button" id="searchButton">🔍</button>
                             <button class="button small-button" id="settingsButton">⚙️</button>
@@ -245,11 +246,11 @@
 
                     </style>
                     
-              <img id="userdialogimg" src="https://res.dkon.app/img/profile_default_photo.png" alt="user" class="avatar rounded-circle"> &nbsp;  <span id="userdialog">UseName   </span><span title="Onn" id="status" style="visibility: hidden"></span>  <span id="incoming"></span>
+              <img id="userdialogimg" src="https://res.dkon.app/img/profile_default_photo.png" alt="user" class="avatar rounded-circle"> &nbsp;  <span id="userdialog">UseName   </span><span title="Onn" id="status" style="visibility: hidden"></span>  
                     
                    
                     <button alt="Call Start" class="button small-button button-rights-dkn" id="btnCall">📞</button>
-                    <button alt="Call End" class="button small-button button-rights-dkn" id="btnHangup" style="visibility:hidden">☎️</button>
+                    <!--button alt="Call End" class="button small-button button-rights-dkn" id="btnHangup" style="visibility:none">☎️</button-->
 
                 
                 </div>
@@ -285,6 +286,9 @@
         let uploadedImageUrl = null;
         ///
       
+        
+          document.getElementById('btnHangup').disabled = true;
+    document.getElementById('btnHangup').style.display = 'none'; // Скрыть кнопку
         ///
         async function loadDialogs() {
             const response = await fetch(apiUrlDialogs, {
@@ -295,6 +299,9 @@
                     accessToken
                 })
             });
+            
+            
+            
             const data = await response.json();
             const dialogsDiv = document.getElementById('dialogs');
             dialogsDiv.innerHTML = '';
@@ -319,7 +326,7 @@
             localStorage.setItem('ChatIMG', chat.withUserPhotoUrl || 'https://res.dkon.app/img/profile_default_photo.png');
             localStorage.setItem('UserNameChat', chat.withUserFullname || 'UserName');
              localStorage.setItem('Zvonok', chat.fromUserId);
-             
+           
              
              
              const accountIdDkon = localStorage.getItem('accountId');
